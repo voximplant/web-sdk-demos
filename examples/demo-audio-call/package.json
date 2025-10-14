@@ -1,0 +1,47 @@
+{
+  "name": "demo-audio-call",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "email": "info@voximplant.com",
+    "name": "Voximplant, Inc.",
+    "url": "https://voximplant.com"
+  },
+  "homepage": "https://voximplant.com",
+  "scripts": {
+    "dev": "vite",
+    "build": "yarn type-check && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@voximplant/spaceui": "2.68.3",
+    "@voximplant/websdk": "5.0.0",
+    "vue": "3.5.22",
+    "vue-router": "4.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.18.10",
+    "@vitejs/plugin-vue": "6.0.1",
+    "@vue/eslint-config-prettier": "10.2.0",
+    "@vue/eslint-config-typescript": "14.6.0",
+    "@vue/tsconfig": "0.8.1",
+    "eslint": "9.37.0",
+    "eslint-plugin-vue": "10.4.0",
+    "jiti": "2.6.1",
+    "npm-run-all2": "8.0.4",
+    "prettier": "3.6.2",
+    "typescript": "5.6.3",
+    "vite": "6.3.5",
+    "vite-plugin-vue-devtools": "8.0.2",
+    "vue-tsc": "2.1.6"
+  },
+  "packageManager": "yarn@4.10.3"
+}
