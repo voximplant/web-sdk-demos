@@ -1183,10 +1183,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@voximplant/websdk@npm:5.0.0":
-  version: 5.0.0
-  resolution: "@voximplant/websdk@npm:5.0.0"
-  checksum: 10c0/5ce180411e8e261ccebde6c0661fa81ef35e3f56b3efac3e7cbb1e08a9202aa5da792da240b368bd4129368abaa893efb07636d1a20e478fa7dfc236dc17c6f4
+"@voximplant/websdk@npm:5.1.0":
+  version: 5.1.0
+  resolution: "@voximplant/websdk@npm:5.1.0"
+  checksum: 10c0/996d4d9977378cf2883aa481f65fa41fc838f675b598a5c1235bb6c7d4c28ef7020a7132cccbafaead4814e5040e540f9df9e70eb2ac708699f0514d4a2d6b5e
   languageName: node
   linkType: hard
 
@@ -1991,7 +1991,7 @@ __metadata:
     "@types/node": "npm:22.18.10"
     "@vitejs/plugin-vue": "npm:6.0.1"
     "@voximplant/spaceui": "npm:2.68.3"
-    "@voximplant/websdk": "npm:5.0.0"
+    "@voximplant/websdk": "npm:5.1.0"
     "@vue/eslint-config-prettier": "npm:10.2.0"
     "@vue/eslint-config-typescript": "npm:14.6.0"
     "@vue/tsconfig": "npm:0.8.1"
