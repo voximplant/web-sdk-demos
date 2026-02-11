@@ -3,7 +3,7 @@ FROM node:22.12.0-alpine3.21 AS builder
 COPY . /build
 WORKDIR /build
 
-RUN yarn install && \
+RUN YARN_CHECKSUM_BEHAVIOR=update yarn install && \
     yarn build
 
 FROM nginxinc/nginx-unprivileged:stable-alpine-slim
