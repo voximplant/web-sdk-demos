@@ -1,0 +1,18 @@
+variables:
+  build_docker_image_registry: docker.io/voximplanthub/websdk5-examples-demo-push-service
+  hadolint_dockerfile_path: examples/demo-push-service/Dockerfile
+  build_docker_image_dockerfile_path: examples/demo-push-service/
+  build_docker_args: >-
+    VITE_FIREBASE_API_KEY=$VITE_FIREBASE_API_KEY
+    VITE_FIREBASE_AUTH_DOMAIN=websdk5-push-devapp.firebaseapp.com
+    VITE_FIREBASE_PROJECT_ID=websdk5-push-devapp
+    VITE_FIREBASE_STORAGE_BUCKET=websdk5-push-devapp.firebasestorage.app
+    VITE_FIREBASE_MESSAGING_SENDER_ID=337012591440
+    VITE_FIREBASE_APP_ID=1:337012591440:web:59a4f9cb35725d8531ba55
+    VITE_FIREBASE_MEASUREMENT_ID=G-69S6PEJNTE
+    VITE_VOXIMPLANT_BUNDLE_ID=websdk5-push-service-dev-app
+
+include:
+  - project: devops/automagic
+    ref: master
+    file: ci/automagic.yml

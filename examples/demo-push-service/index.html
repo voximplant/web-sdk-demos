@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Voximplant Push Service Demo</title>
+    <meta
+      name="description"
+      content="PWA demo showing Voximplant Web SDK audio calls, push notifications, and microphone/camera capture."
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="mask-icon" href="/icon.svg" color="#2962ff" />
+
+    <meta name="theme-color" content="#2962ff" />
+    <meta name="color-scheme" content="light" />
+
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Vox Push Demo" />
+    <meta name="application-name" content="Vox Push Demo" />
+
+    <meta
+      http-equiv="Permissions-Policy"
+      content="microphone=(self), camera=(self), notifications=(self), display-capture=(self)"
+    />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
