@@ -1,7 +1,7 @@
 # Voximplant WebSDK v5 examples
 
 This repository contains a collection of ready-to-use example applications demonstrating 
-the capabilities of the Voximplant Web SDK 5.x.
+the Voximplant Web SDK 5.x capabilities.
 
 ## Available demos
 
@@ -20,6 +20,20 @@ A fully-featured audio calling application built with Vue.js 3 and Voximplant We
 - Call duration tracking
 
 **Tech stack:** Vue.js 3, TypeScript, Vite, Vue Router, SpaceUI
+
+### [Push Service Demo](./examples/demo-push-service)
+
+Extends the [Audio Call Demo](./examples/demo-audio-call) with **Firebase Cloud Messaging (FCM) push notifications**, so incoming calls can wake the app up even if the tab is in the background or closed.
+
+**Additional features (on top of the [Audio Call Demo](./examples/demo-audio-call)):**
+
+- Push token registration with the Voximplant's `pushService` module
+- Firebase Cloud Messaging (FCM) integration for foreground and background push delivery
+- Service worker that handles push events and displays system notifications
+- Auto sign-in with a stored access token when opening the app from a notification click
+- PWA support via `vite-plugin-pwa` (installable app with manifest and icons)
+
+**Tech stack:** Vue.js 3, TypeScript, Vite, Vue Router, SpaceUI, Firebase, vite-plugin-pwa
 
 ## Quick start
 
@@ -46,6 +60,7 @@ For detailed setup instructions, backend configuration, and customization option
 websdk5-examples/
 ├── examples/
 │   └── demo-audio-call/    # Audio calling demo application
+│   └── demo-push-service/  # Audio calling demo with FCM push notifications
 └── README.md               # This file
 ```
 
