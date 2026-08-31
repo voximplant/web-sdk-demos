@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WebSDK unpkg install demo</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        background: #f4f6f8;
+        color: #1a1a1a;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .title {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 20rem;
+        padding: 1rem 1.25rem;
+        border-radius: 0.75rem;
+        background: #fff;
+        box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+      }
+
+      .label {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+        color: #5f6b7a;
+      }
+
+      .permission {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    </style>
+    <script
+      id="websdk-core-module"
+      defer
+      src="https://unpkg.com/@voximplant/websdk/index.min.js"
+    ></script>
+
+    <!-- Optional modules load from separate unpkg scripts. This page loads Stream. Other modules are listed in the README. -->
+    <script
+      defer
+      id="websdk-stream-module"
+      src="https://unpkg.com/@voximplant/websdk/modules/stream/stream.min.js"
+    ></script>
+    <script async type="module">
+      // The script tags use defer, so wait until the core and Stream scripts have loaded.
+      const websdkModuleAwaiter = Promise.withResolvers();
+      const awaitForModules = ['websdk-core-module', 'websdk-stream-module'];
+
+      const onModuleLoad = (event) => {
+        const moduleId = event.target?.id;
+        if (!moduleId) {
+          return;
+        }
+
+        awaitForModules.splice(awaitForModules.indexOf(moduleId), 1);
+
+        const shouldAwaitForModules = awaitForModules.length > 0;
+        if (shouldAwaitForModules) return;
+
+        websdkModuleAwaiter.resolve();
+      };
+
+      document.getElementById('websdk-core-module').addEventListener('load', onModuleLoad);
+      document.getElementById('websdk-stream-module').addEventListener('load', onModuleLoad);
+
+      await websdkModuleAwaiter.promise;
+
+      // unpkg exposes the SDK on the Voximplant global.
+      // Stream's loader and token are on Voximplant.Stream. Other modules are listed in the README.
+      const {
+        Core,
+        Stream: { StreamLoader, streamToken },
+      } = Voximplant;
+
+      // SDK features are available after the core is initialized.
+      const websdk = await Core.init();
+
+      // Optional modules must be registered before use. This example registers Stream.
+      await websdk.registerModules([StreamLoader()]);
+
+      // getModule returns undefined when the token was not registered. Stream is registered above.
+      const streamModule = websdk.getModule(streamToken);
+
+      const cameraPermissionEl = document.getElementById('camera-permission');
+      const microphonePermissionEl = document.getElementById('microphone-permission');
+
+      cameraPermissionEl.textContent = streamModule.hardware.permission.camera.value;
+      microphonePermissionEl.textContent = streamModule.hardware.permission.microphone.value;
+
+      streamModule.hardware.permission.camera.watch((nextPermission) => {
+        cameraPermissionEl.textContent = nextPermission;
+      });
+
+      streamModule.hardware.permission.microphone.watch((nextPermission) => {
+        microphonePermissionEl.textContent = nextPermission;
+      });
+    </script>
+  </head>
+  <body>
+    <main class="page">
+      <h1 class="title">WebSDK from unpkg</h1>
+
+      <section class="card">
+        <p class="label">Camera permission</p>
+        <p class="permission" id="camera-permission"></p>
+      </section>
+
+      <section class="card">
+        <p class="label">Microphone permission</p>
+        <p class="permission" id="microphone-permission"></p>
+      </section>
+    </main>
+  </body>
+</html>
