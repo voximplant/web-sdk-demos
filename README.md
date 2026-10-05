@@ -5,6 +5,28 @@ the Voximplant Web SDK 5.x capabilities.
 
 ## Available demos
 
+### [Install from npm](./examples/demo-install-from-npm)
+
+Minimal example that installs `@voximplant/websdk` from npm.
+
+**Key features:**
+
+- Install WebSDK from npm
+- Register extra module
+
+**Tech stack:** Vue.js 3, TypeScript, Vite
+
+### [Install from unpkg](./examples/demo-install-from-unpkg)
+
+Minimal example that installs `@voximplant/websdk` from unpkg.
+
+**Key features:**
+
+- Install WebSDK from unpkg
+- Register extra module
+
+**Tech stack:** Vanilla js, HTML
+
 ### [Audio Call Demo](./examples/demo-audio-call)
 
 A fully-featured audio calling application built with Vue.js 3 and Voximplant Web SDK 5.x. 
